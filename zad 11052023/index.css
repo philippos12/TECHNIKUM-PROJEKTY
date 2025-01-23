@@ -1,0 +1,54 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+    user-select: none;
+}
+.lcolumn{
+    width: 20%;
+    height: 950px;
+    border: solid 2px;
+    box-sizing: border-box;
+    float: left;
+    padding: 8px;
+}
+.tcolumn{
+    width: 80%;
+    height: 200px;
+    border: solid 2px;
+    box-sizing: border-box;
+    float: left;
+    background-color: rgb(181, 255, 181);
+}
+.mcolumn{
+    width: 80%;
+    height: 550px;
+    border: solid 2px;
+    box-sizing: border-box;
+    float: left;
+    padding: 1%;
+}
+.square{
+    border-right: solid 2px;
+    border-bottom: solid 2px;
+    box-sizing: border-box;
+    float: left;
+    height: 70px;
+    width: 70px;
+    font-size: 60px;
+    text-align: center;
+}
+.bingocard{
+    border-top: solid 2px;
+    border-left: solid 2px;
+    box-sizing: border-box;
+    height: 100%;
+    width: 352px;
+}
+.squarem{
+    border: solid 2px;
+    width: 100px;
+    height: 100px;
+    float: left;
+    font-size: 86px;
+    text-align: center;
+}

@@ -1,0 +1,135 @@
+body{
+    height: 64vw;
+    margin: 0;
+    padding: 5%;
+    background-image: radial-gradient(rgb(255, 255, 255),rgb(0, 0, 0));
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+img{
+    height: 100%;
+    width: 100%;
+}
+.cardback{
+    height: 49px;
+    margin-top: 26px;
+}
+.table{
+    border: solid 30px rgb(41, 27, 0);
+    border-radius: 40px;
+    background-image: radial-gradient(rgb(68, 136, 41),rgb(29, 59, 16));
+    height: 60%;
+    margin-top: 11%;
+}
+.playerarea{
+    box-sizing: border-box;
+    height: 50%;
+    width: 25%;
+    float:left;
+    padding: 20px;
+    user-select: none;
+}
+.dealerarea{
+    box-sizing: border-box;
+    height: 137px;
+    width: 431px;
+    right: 10%;
+    top: 48%;
+    position: absolute;
+}
+.card{
+    height: 33%;
+    width: 16%;
+    background-color: rgb(224, 224, 224);
+    border-radius: 5px;
+    float: left;
+    margin-left: 24px;
+    margin-top: 66px;
+    box-shadow: 1px 1px;
+}
+.pile{
+    position: fixed;
+    top: 630px;
+    left: 837px;
+    width: 3%;
+    height: 10%;
+}
+.top{
+    transform: rotate(180deg);
+}
+.you{
+    border: solid 6px yellow;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+.score{
+    text-align: center;
+    color: yellow;
+    margin-top: 66px;
+    margin-bottom: 65px;
+    font-size: 40px;
+    font-family: sans-serif;
+}
+.selected{
+    border-bottom: solid 10px yellow;
+    box-sizing: border-box;
+}
+.options{
+    background-color: tan;
+    border: solid 2px;
+    float: left;
+    margin-top: 42px;
+    margin-right: 20px;
+    padding: 10px;
+    font-size: 18px;
+    transition: all 400ms;
+}
+.hidden{
+    display: none;
+}
+.options:hover{
+    background-color: yellow;
+    font-size: 22px;
+}
+.devadjust{
+    margin-left: 220px;
+    margin-top: 75%;
+}
+.pot{
+    height: 130px;
+    width: 130px;
+    border-radius: 100%;
+    background-color: rgb(37, 18, 0);
+    margin-left: -240px;
+    margin-top: 50px;
+    position: absolute;
+    text-align: center;
+}
+.highlight{
+    background-image: radial-gradient(rgb(255, 255, 255),rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
+}
+.winscreen{
+    border-radius: 40px;
+    border-left: solid 12px gold;
+    border-right: solid 12px gold;
+    height: 330px;
+    width: 1920px;
+    position: absolute;
+    background-color: darkslategrey;
+    z-index: 2;
+    font-size: 50px;
+    text-align: center;
+    user-select: none;
+    transition: all 1000ms;
+}
+.bigbutton{
+    border: solid 2px;
+    background-color: bisque;
+    height: 110px;
+    width: 636px;
+    float: left;
+    transition: all 400ms;
+}
+.bigbutton:hover{
+    background-color: rgb(255, 196, 124);
+}

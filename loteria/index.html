@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Loteria</title>
+	<link href="index.css" rel="stylesheet">
+</head>
+<body>
+	<header>LOTTO</header>
+	<div class="display">
+		<header style="border-bottom: none;">Twoje liczby:</header>
+		<p style="text-align: center; user-select: none; font-size: 64px;" id="nums">xd</p>
+	</div>
+	<div class="button" id="button" onclick="rng()">Losuj</div>
+	<div class="table" id="table">
+	</div>
+<script type="text/javascript">
+	tab = []
+	winningnums = []
+	for (i = 1; i < 50; i++){
+		box = document.createElement("box");
+		box.innerHTML = i;
+		box.id = i;
+		box.classList.add("box");
+		box.onclick = function addnum(event){
+			tab.push(this.innerHTML); 
+			selected(this);
+			this.style.backgroundColor = "gainsboro";
+			document.getElementById("nums").innerHTML = tab;
+				if(tab.length == 6){
+					document.getElementById("button").style.backgroundColor = "green"
+					disable();
+		}}
+		document.getElementById("table").appendChild(box);
+	}
+	
+	reset = document.createElement("reset");
+	reset.innerHTML = "RESET";
+	reset.classList.add("reset");
+	reset.onclick = function reset(event){
+		tab = []
+		winningnums = []
+		document.getElementById("nums").innerHTML = winningnums
+		document.getElementById("button").style.backgroundColor = "gray";
+		for(i = 1; i < 50; i++){
+			document.getElementById(i).style.borderColor = "black";
+			document.getElementById(i).style.backgroundColor = "";
+			document.getElementById(i).onclick = function addnum(event){
+			tab.push(this.innerHTML); 
+			selected(this);
+			this.style.backgroundColor = "gainsboro";
+			document.getElementById("nums").innerHTML = tab;
+				if(tab.length == 6){
+					document.getElementById("button").style.backgroundColor = "green"
+					disable();
+		}}}
+	}
+	document.getElementById("table").appendChild(reset);
+	
+	function disable(){
+		for (i = 1; i < 50; i++){
+			document.getElementById(i).onclick = "";
+		}
+	}
+	function selected(b){
+		b.onclick = "";
+	}
+	function rng(){
+		if(document.getElementById("button").style.backgroundColor == "green"){
+			if(winningnums == ""){
+				for(i = 0; i <6; i++){
+					winningnums.push(Math.floor(Math.random() * 50) + 1);
+				}
+			}
+				alert("Wylosowane liczby: " + winningnums);
+				
+				for(i = 1; i < 50; i++){
+					if(document.getElementById(i).style.backgroundColor == "gainsboro"){
+						document.getElementById(i).style.borderColor = "red";
+						for(j = 0; j < 6; j++){
+							if(winningnums[j] == document.getElementById(i).innerHTML){
+								document.getElementById(i).style.borderColor = "green";
+							}
+						}
+					}
+				}
+
+				//for(i = 0; i < 6; i++){
+				//	for(j = 1; j < 50; j++){
+				//		if(winningnums[i] == tab[j] && document.getElementById(j).style.backgroundColor == "gainsboro"){
+				//			document.getElementById(j).style.borderColor = "green";
+				//		}
+				//		else if(winningnums[i] != tab[j] && document.getElementById(j).style.backgroundColor == "gainsboro"){
+				//			document.getElementById(j).style.borderColor = "red";
+				//		}
+				//	}
+				//}
+		}
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ciąg fibonacciego</title>
+<link rel="stylesheet" href="index.css">
+<meta charset="UTF-8">
+<meta name="author" content="Filip Polus 4bIp">
+</head>
+<body>
+	<div class="main">
+		<div class="header">CIĄGI</div>
+		<div class="contentsmain">
+			<div class="contentsheader">
+				<div class="cube"></div>
+				<div class="button" onclick="Window()">Ciąg arytmetyczny</div>
+				<div class="button">Ciąg fibonacciego</div>
+			</div>
+			<div class="contentsfield">
+				<div class="contentsfieldtext">
+					Podaj ilość wyrazów ciągu <br><br>
+					<br><br>
+					<br><br>
+					Wynik <br><br>
+					</ge>
+				</div>
+				<div class="contenstfieldinput">
+					<input type="text" id="n" value="1" onchange="ciag()"> <br><br>
+					<input type="text" id="a" value="1" onchange="ciag()"> <br><br>
+					<input type="text" id="r" value="1" onchange="ciag()"> <br><br>
+					<input type="text" id="w" value="0" readonly> <br><br>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	function ciag(){
+		n = document.getElementById("n").value;
+		a = document.getElementById("a").value;
+		r = document.getElementById("r").value;
+		
+		for (i=0; i<n; i++){
+  			a = a+r;
+  			r = a-r;
+			}
+		
+		document.getElementById("w").value = r
+	}
+	function Window(){
+		location.replace("arytm.html");
+	}
+</script>
+</body>
+</html>

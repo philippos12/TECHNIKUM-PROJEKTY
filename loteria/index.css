@@ -1,0 +1,64 @@
+body{
+	margin: 0;
+	background-color: rgb(252, 252, 228);
+}
+header{
+	background-color: rgb(209, 209, 164);
+	text-align: center;
+	font-size: 64px;
+	user-select: none;
+	font-family: sans-serif;
+	border-bottom: solid 6px;
+}
+.display{
+	background-color: rgb(185, 185, 144);
+	margin-left: 300px;
+	height: 300px;
+	width: 66%;
+}
+.button{
+	font-size: 64px;
+	font-family: sans-serif;
+	text-align: center;
+	background-color: gray;
+	margin-top: 60px;
+	margin-left: 44%;
+	width: 10%;
+	padding: 10px;
+	border-radius: 3%;
+	user-select: none;
+}
+.table{
+	float:left;
+	background-color: gray;
+	margin-top: 5%;
+	margin-left: 17%;
+	width: 1190px;
+}
+.box{
+	box-sizing: border-box;
+	float:left;
+	border: solid 2px;
+	height: 70px;
+	width: 70px;
+	font-size: 60px;
+	text-align: center;
+	user-select: none;
+}
+.box:hover{
+	background-color: gainsboro;
+}
+.reset{
+	box-sizing: border-box;
+	float:right;
+	border: solid 2px;
+	height: 70px;
+	width: 140px;
+	font-size: 40px;
+	text-align: center;
+	user-select: none;
+	padding-top: 1%;
+}
+.reset:hover{
+	background-color: gainsboro;
+}

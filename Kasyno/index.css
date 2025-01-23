@@ -1,0 +1,227 @@
+body{
+	background-color: gainsboro;
+	margin: 0;
+}
+header{
+	background-color: rgb(0, 36, 56);
+	padding-bottom: 16px;
+	user-select: none;
+}
+.profile{
+	color:lightgoldenrodyellow;
+	text-align: right;
+	padding-right: 16px;
+	user-select: none;
+}
+.logo{
+	text-align: left;
+	background: #6EC1E4;
+}
+a:link{
+	text-decoration: none;
+	color:lightgoldenrodyellow;
+}
+a:visited{
+	text-decoration: none;
+	color:lightgoldenrodyellow;
+}
+.casinobg{
+	background-image: linear-gradient(green, rgb(41, 139, 28), green);
+	border-style: solid;
+	border-radius: 2px;
+	height: 770px;
+}
+.board{
+	padding-top: 10px;
+	padding-right: 1%;
+	float:right;
+	width: 150px;
+	height: 100%;
+}
+.fieldzero{
+	background: greenyellow;
+	text-align: center;
+	color:white;
+	width: 150px;
+	height: 50px;
+	float:left;
+	font-size: 38px;
+	font-weight:bold;
+	-webkit-text-stroke: 1px;
+	-webkit-text-stroke-color: black;
+	user-select: none;
+}
+.fieldb{
+	background: black;
+	text-align: center;
+	color:white;
+	width: 50px;
+	height: 50px;
+	float:left;
+	font-size: 38px;
+	font-weight:bold;
+	-webkit-text-stroke: 1px;
+	-webkit-text-stroke-color: black;
+	user-select: none;
+}
+.fieldb:hover{
+	font-style: italic;
+}
+.fieldr{
+	background: red;
+	text-align: center;
+	color:white;
+	width: 50px;
+	height: 50px;
+	float:left;
+	font-size: 38px;
+	font-weight:bold;
+	-webkit-text-stroke: 1px;
+	-webkit-text-stroke-color: black;
+	user-select: none;
+}
+.fieldr:hover{
+	font-style: italic;
+}
+.board2{
+	padding-top: 10px;
+	float:right;
+	width: 25px;
+	height: 100%;
+}
+.board3{
+	padding-top: 10px;
+	float:right;
+	width: 25px;
+	height: 100%;
+	margin-right: 2px;
+}
+.option{
+	float:right;
+	width: 25px;
+	height: 210.5px;
+	border:solid;
+	border-radius: 2px;
+	text-align: center;
+	background-color: rgb(39, 167, 22);
+	user-select: none;
+}
+.option:hover{
+	background-color: rgb(0, 255, 0);
+}
+.suboption{
+	float:right;
+	width: 25px;
+	height: 102.3px;
+	border:solid;
+	border-radius: 2px;
+	text-align: center;
+	background-color: rgb(39, 167, 22);
+	user-select: none;
+}
+.suboption:hover{
+	background-color: rgb(0, 255, 0);
+}
+.beton{
+	z-index: 2;
+	display: none;
+	float:right;
+	margin-top:10px;
+	margin-right:6px;
+	padding:10px;
+	width:33%;
+	height:580px;
+	background-color: gray;
+	font-size: 36px;
+}
+.display{
+	display: block;
+}
+.beton-column1{
+	width: 100%;
+	height: 75%;
+	border:solid;
+	border-radius: 2px;
+	float: left;
+	background-color: white;
+	user-select:none;
+}
+.bet{
+	border:solid;
+	border-radius: 2px;
+	margin-top: 5px;
+	float: left;
+	height: 20%;
+	width: 45%;
+	text-align: center;
+	line-height: 110px;
+	user-select: none;
+	background-color: green;
+}
+.cancel{
+	border:solid;
+	border-radius: 2px;
+	margin-top: 5px;
+	float:right;
+	height: 20%;
+	width: 45%;
+	text-align: center;
+	line-height: 110px;
+	user-select: none;
+	background: rgb(190, 46, 46);
+}
+.bet:hover{
+	background-color: rgb(0, 255, 0);
+}
+.cancel:hover{
+	background-color: rgb(255, 0, 0);
+}
+table{
+	display: none;
+	z-index: 0;
+	background-color: rgb(0, 183, 255);
+	position: fixed;
+	right: 350px;
+	top: 180px;
+	border:solid;
+	border-radius: 2px;
+	border-collapse:collapse;
+	user-select: none;
+	text-align: center;
+}
+td, th{
+	border: solid;
+}
+.play{
+	background-color: rgb(190, 46, 46);
+	text-align: center;
+	width: 280px;
+	height: 80px;
+	position: absolute;
+	right: 760px;
+	bottom: 30px;
+	line-height: 75px;
+	font-size: 40px;
+	border: solid;
+	border-radius: 3px;
+	border-color: black;
+}
+.play:hover{
+	background-color: rgb(0, 255, 0);
+	border-color:yellow;
+}
+.roulettetable{
+	padding:25px;
+}
+.winningnumber{
+	font-size:60px ;
+	top: 510px;
+	left: 330px;
+	height: 100px;
+	width: 100px;
+	position: absolute;
+	color: gold;
+	-webkit-text-stroke: 1px;
+	-webkit-text-stroke-color: goldenrod;
+	text-align: center;
+}

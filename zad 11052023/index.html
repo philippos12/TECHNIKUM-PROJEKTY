@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hangmane</title>
+	<link href="index.css" rel="stylesheet">
+</head>
+<body>
+<div class="lcolumn">
+	<div class="bingocard">
+		<div class="square">B</div>
+		<div class="square">I</div>
+		<div class="square">N</div>
+		<div class="square">G</div>
+		<div class="square">O</div>
+		<div class="square" id="1"></div>
+		<div class="square" id="2"></div>
+		<div class="square" id="3"></div>
+		<div class="square" id="4"></div>
+		<div class="square" id="5"></div>
+		<div class="square" id="6"></div>
+		<div class="square" id="7"></div>
+		<div class="square" id="8"></div>
+		<div class="square" id="9"></div>
+		<div class="square" id="10"></div>
+		<div class="square" id="11"></div>
+		<div class="square" id="12"></div>
+		<div class="square"></div>
+		<div class="square" id="13"></div>
+		<div class="square" id="14"></div>
+		<div class="square" id="15"></div>
+		<div class="square" id="16"></div>
+		<div class="square" id="17"></div>
+		<div class="square" id="18"></div>
+		<div class="square" id="19"></div>
+		<div class="square" id="20"></div>
+		<div class="square" id="21"></div>
+		<div class="square" id="22"></div>
+		<div class="square" id="23"></div>
+		<div class="square" id="24"></div>
+	</div>
+</div>
+<div class="tcolumn" onclick="play()" id="tcolumn">
+	<p style="font-size: 64px; text-align: center; user-select: none;">BINGO</p>
+</div>
+<div class="mcolumn" id="mcolumn">
+</div>
+<div class="tcolumn"></div>
+<script type="text/javascript">
+b = 0;
+for(i = 1; i < 25; i++){
+	document.getElementById(i).innerHTML = Math.floor(Math.random() * 75);
+}
+function play(){
+	document.getElementById("tcolumn").onclick = "";
+	rngmachine = setInterval(rng, 200)
+}
+
+function rng(){
+	num = document.createElement("div");
+	num.innerHTML = Math.floor(Math.random() * 75);
+	num.classList.add("squarem");
+	b = b + 1;
+	if(b == 70){
+		clearInterval(rngmachine)
+	}
+	num.id = "b" + b;
+	document.getElementById("mcolumn").appendChild(num);
+	for(i = 1; i < 25; i++){
+		for(j = 1; j < b - 1; j++){
+			if(document.getElementById(i).innerHTML == document.getElementById("b" + j).innerHTML){
+				document.getElementById(i).style.backgroundColor = "green";
+				if(document.getElementById("1").style.backgroundColor == "green" && document.getElementById("2").style.backgroundColor == "green" && document.getElementById("3").style.backgroundColor == "green" && document.getElementById("4").style.backgroundColor == "green" && document.getElementById("5").style.backgroundColor == "green"){
+					clearInterval(rngmachine)
+				}
+				else if(document.getElementById("6").style.backgroundColor == "green" && document.getElementById("7").style.backgroundColor == "green" && document.getElementById("8").style.backgroundColor == "green" && document.getElementById("9").style.backgroundColor == "green" && document.getElementById("10").style.backgroundColor == "green"){
+					clearInterval(rngmachine)
+				}
+				else if(document.getElementById("11").style.backgroundColor == "green" && document.getElementById("12").style.backgroundColor == "green" && document.getElementById("13").style.backgroundColor == "green" && document.getElementById("14").style.backgroundColor == "green" && document.getElementById("15").style.backgroundColor == "green"){
+					clearInterval(rngmachine)
+				}
+				else if(document.getElementById("16").style.backgroundColor == "green" && document.getElementById("17").style.backgroundColor == "green" && document.getElementById("18").style.backgroundColor == "green" && document.getElementById("19").style.backgroundColor == "green" && document.getElementById("20").style.backgroundColor == "green"){
+					clearInterval(rngmachine)
+				}
+				else if(document.getElementById("21").style.backgroundColor == "green" && document.getElementById("22").style.backgroundColor == "green" && document.getElementById("23").style.backgroundColor == "green" && document.getElementById("24").style.backgroundColor == "green" && document.getElementById("25").style.backgroundColor == "green"){
+					clearInterval(rngmachine)
+				}
+				//vertically now VVV
+				else if(document.getElementById("1").style.backgroundColor == "green" && document.getElementById("6").style.backgroundColor == "green" && document.getElementById("11").style.backgroundColor == "green" && document.getElementById("15").style.backgroundColor == "green" && document.getElementById("20").style.backgroundColor == "green"){
+					clearInterval(rngmachine)
+				}
+				else if(document.getElementById("2").style.backgroundColor == "green" && document.getElementById("7").style.backgroundColor == "green" && document.getElementById("12").style.backgroundColor == "green" && document.getElementById("16").style.backgroundColor == "green" && document.getElementById("21").style.backgroundColor == "green"){
+					clearInterval(rngmachine)
+				}
+				else if(document.getElementById("4").style.backgroundColor == "green" && document.getElementById("9").style.backgroundColor == "green" && document.getElementById("14").style.backgroundColor == "green" && document.getElementById("18").style.backgroundColor == "green" && document.getElementById("23").style.backgroundColor == "green"){
+					clearInterval(rngmachine)
+				}
+				else if(document.getElementById("5").style.backgroundColor == "green" && document.getElementById("10").style.backgroundColor == "green" && document.getElementById("14").style.backgroundColor == "green" && document.getElementById("19").style.backgroundColor == "green" && document.getElementById("24").style.backgroundColor == "green"){
+					clearInterval(rngmachine)
+				}
+			}
+		}
+	}
+}
+</script>
+</body>
+</html>

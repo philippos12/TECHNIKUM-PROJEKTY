@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>EKONOMBETS TEXAS HOLD'EM FREE VIRTUAL CASINO</title>
+	<link href="index.css" rel="stylesheet">
+</head>
+<body id="body">
+	<iframe class="hidden" id="iframe" style="position: absolute; width: 100%; height: 100%; z-index: 4; top: 0px;"></iframe>
+	<div class="winscreen" style="margin-top: -90vw" id="winscreen">
+		<h1 style="margin-top: 10px; color:aliceblue" id="winner">WINNER:</h1>
+		<div class="bigbutton" onclick="redirect()">Check out the CASINO</div>
+		<div class="bigbutton" onclick="cry()">cry</div>
+		<div class="bigbutton" onclick="window.location.reload()">Play Again</div>
+	</div>
+	<div class="table">
+		<div class="dealerarea">
+			<div class="card" style="margin-left: 0;"><img src="assets/ace_hearts.png" id="1"></div>
+			<div class="card"><img src="assets/2_hearts.png" id="2"></div>
+			<div class="card"><img src="assets/6_clubs.png" id="3"></div>
+			<div class="card pile" id="pilecard1"><img class="cardback" src="assets/cardback.png" id="4"></div>
+			<div class="card pile" id="pilecard2"><img class="cardback" src="assets/cardback.png" id="5"></div>
+			<div class="pot"><p id="pot" style="margin-top: 40px; font-size: 40px; color: gold;">10$</p></div>
+		</div>
+		<div class="playerarea top" id="player1">
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player1card1"></div>
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player1card2"></div>
+			<div class="score top devadjust" id="score1">Wynik:</div>
+		</div>
+		<div class="playerarea top" id="player2">
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player2card1"></div>
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player2card2"></div>
+			<div class="score top devadjust" id="score2">Wynik:</div>
+		</div>
+		<div class="playerarea top" id="player3">
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player3card1"></div>
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player3card2"></div>
+			<div class="score top devadjust" id="score3">Wynik:</div>
+		</div>
+		<div class="playerarea top" id="player4">
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player4card1"></div>
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player4card2"></div>
+			<div class="score top devadjust" id="score4">Wynik:</div>
+		</div>
+		<div class="playerarea" id="player5">
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player5card1"></div>
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player5card2"></div>
+			<div class="score" id="score5">Wynik:</div>
+		</div>
+		<div class="playerarea" id="player6">
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player6card1"></div>
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player6card2"></div>
+			<div class="score" id="score6">Wynik:</div>
+		</div>
+		<div class="playerarea you" id="player7">
+			<div class="card"><img id="yourcard1" src="assets/ace_clubs.png"></div>
+			<div class="card"><img id="yourcard2" src="assets/ace_spades.png"></div>
+			<div class="score" id="score7">Wynik:</div>
+			<div class="options hidden" id="callbutton" onclick="call()">CALL</div>
+			<div class="options hidden" id="raisebutton" onclick="raise()">RAISE</div>
+			<div class="options hidden" id="foldbutton" onclick="fold()">FOLD</div>
+		</div>
+		<div class="playerarea" id="player8">
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player8card1"></div>
+			<div class="card"><img class="cardback" src="assets/cardback.png" id="player8card2"></div>
+			<div class="score" id="score8">Wynik:</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	//wybor graczy
+	//dostajemy 2 karty
+	//diler kladzie 3 karty
+	//fold, call, raise
+	player = 1;
+	availablecards = ["2_clubs","2_diamonds","2_hearts","2_spades","3_clubs","3_diamonds","3_hearts","3_spades","4_clubs","4_diamonds","4_hearts","4_spades","5_clubs","5_diamonds","5_hearts","5_spades","6_clubs","6_diamonds","6_hearts","6_spades","7_clubs","7_diamonds","7_hearts","7_spades","8_clubs","8_diamonds","8_hearts","8_spades","9_clubs","9_diamonds","9_hearts","9_spades","10_clubs","10_diamonds","10_hearts","10_spades","jack_clubs","jack_diamonds","jack_hearts","jack_spades","queen_clubs","queen_diamonds","queen_hearts","queen_spades","king_clubs","king_diamonds","king_hearts","king_spades","ace_clubs","ace_diamonds","ace_hearts","ace_spades"]
+	bet = 10;
+	pot = 0;
+	callstreak = 0;
+	players = 8;
+	revealed = 0;
+	winner = 0;
+	winningplayer = 0;
+	//alert(availablecards[(Math.floor(Math.random() * availablecards.length))])
+	document.getElementById("yourcard1").src = "assets/" + availablecards[(Math.floor(Math.random() * availablecards.length))] + ".png"
+	document.getElementById("yourcard2").src = "assets/" + availablecards[(Math.floor(Math.random() * availablecards.length))] + ".png"
+	document.getElementById("1").src = "assets/" + availablecards[(Math.floor(Math.random() * availablecards.length))] + ".png"
+	document.getElementById("2").src = "assets/" + availablecards[(Math.floor(Math.random() * availablecards.length))] + ".png"
+	document.getElementById("3").src = "assets/" + availablecards[(Math.floor(Math.random() * availablecards.length))] + ".png"
+	turn()
+	function turn(){
+		if(player > 8){
+			player = 1;
+		}
+		if(revealed != 1){
+			document.getElementById("player" + player).classList.add("selected")
+		}
+		if(player == 1){
+			if(document.getElementById("player8").classList.contains("selected")){
+				document.getElementById("player8").classList.remove("selected")
+			}
+		}
+		else{
+			document.getElementById("player" + (player - 1)).classList.remove("selected")
+		}
+		if(player == 7 && document.getElementById("score7").innerHTML != "FOLDED"){
+			document.getElementById("callbutton").classList.remove("hidden")
+			document.getElementById("raisebutton").classList.remove("hidden")
+			document.getElementById("foldbutton").classList.remove("hidden")
+			document.getElementById("callbutton").innerHTML = "CALL " + bet + "$"
+			document.getElementById("player7").classList.remove("you")
+		}
+		if(player != 7 && revealed != 1 || document.getElementById("score7").innerHTML == "FOLDED"){
+			wait()
+		}
+		player = player + 1
+		if(players - callstreak == 0 && revealed != 1){
+			reveal()
+			for(i = 1; i <= 8; i++){
+				if(document.getElementById("player" + i).classList.contains("selected")){
+					document.getElementById("player" + i).classList.remove("selected")
+				}
+			}
+		}
+	}
+	function wait(){
+		if(document.getElementById("score" + player).innerHTML != "FOLDED"){
+			AIDecision = Math.floor(Math.random() * 5)
+			if(AIDecision < 3){
+				pot = pot + bet;
+				callstreak = callstreak + 1;
+				document.getElementById("pot").innerHTML = pot + "$"
+			}
+			else if(AIDecision > 2 && AIDecision < 4){
+				bet = bet + 20;
+				pot = pot + bet;
+				callstreak = 0;
+				document.getElementById("pot").innerHTML = pot + "$"
+			}
+			else{
+				players = players - 1;
+				document.getElementById("score" + player).innerHTML = "FOLDED"
+			}
+		}
+		if(revealed != 1){
+			AIturn = setTimeout(turn, Math.floor(Math.random() * 2000) + 1000) //2000 + 1000
+		}
+	}
+	function call(){
+		document.getElementById("callbutton").classList.add("hidden")
+		document.getElementById("raisebutton").classList.add("hidden")
+		document.getElementById("foldbutton").classList.add("hidden")
+		pot = pot + bet;
+		callstreak = callstreak + 1;
+		document.getElementById("pot").innerHTML = pot + "$"
+		wait()
+	}
+	function raise(){
+		document.getElementById("callbutton").classList.add("hidden")
+		document.getElementById("raisebutton").classList.add("hidden")
+		document.getElementById("foldbutton").classList.add("hidden")
+		bet = bet + 20;
+		pot = pot + bet;
+		callstreak = 0;
+		document.getElementById("pot").innerHTML = pot + "$"
+		wait()
+	}
+	function fold(){
+		document.getElementById("callbutton").classList.add("hidden")
+		document.getElementById("raisebutton").classList.add("hidden")
+		document.getElementById("foldbutton").classList.add("hidden")
+		document.getElementById("score7").innerHTML = "FOLDED"
+		players = players - 1;
+		wait()
+	}
+	function reveal(){
+		document.getElementById("4").src = "assets/" + availablecards[(Math.floor(Math.random() * availablecards.length))] + ".png"
+		document.getElementById("5").src = "assets/" + availablecards[(Math.floor(Math.random() * availablecards.length))] + ".png"
+		document.getElementById("pilecard1").classList.remove("pile")
+		document.getElementById("pilecard2").classList.remove("pile")
+		document.getElementById("4").classList.remove("cardback")
+		document.getElementById("5").classList.remove("cardback")
+		revealed = 1
+		for(i = 1; i <= 8; i++){
+			if(i == 7){
+				i = i + 1;
+			}
+			if(document.getElementById("score" + i).innerHTML != "FOLDED"){
+				document.getElementById("player" + i + "card1").src = "assets/" + availablecards[(Math.floor(Math.random() * availablecards.length))] + ".png"
+				document.getElementById("player" + i + "card1").classList.remove("cardback")
+				document.getElementById("player" + i + "card2").src = "assets/" + availablecards[(Math.floor(Math.random() * availablecards.length))] + ".png"
+				document.getElementById("player" + i + "card2").classList.remove("cardback")
+			}
+		}
+		score()
+	}
+	function score(){
+		for(i = 1; i <=5; i++){
+			for(j = 1; j <= 8; j++){
+				if(j == 7){
+					j = 8
+				}
+				x1 = (document.getElementById("player" + j + "card1").src.slice(document.getElementById("player" + j + "card1").src.lastIndexOf("/") - (document.getElementById("player" + j + "card1").src.length - 1)))
+				x2 = (document.getElementById("player" + j + "card2").src.slice(document.getElementById("player" + j + "card2").src.lastIndexOf("/") - (document.getElementById("player" + j + "card2").src.length - 1)))
+				y1 = (document.getElementById(i).src.slice(document.getElementById(i).src.lastIndexOf("/") - (document.getElementById(i).src.length - 1)))
+				x1 = x1.slice(0, x1.lastIndexOf("_"))
+				x2 = x2.slice(0, x2.lastIndexOf("_"))
+				y1 = y1.slice(0, y1.lastIndexOf("_"))
+				if(x1 == y1){
+					document.getElementById("score" + i).innerHTML = "WYNIK: \n" + 1;
+				}
+				if(x2 == y1){
+					document.getElementById("score" + i).innerHTML = "WYNIK: \n" + 1;
+				}
+				else{
+					document.getElementById("score" + i).innerHTML = "WYNIK: \n  0";
+				}
+			}
+		}
+		for(i = 1; i <=8; i++){
+			x = Number(document.getElementById("score" + i).innerHTML.slice(document.getElementById("score" + i).innerHTML.lastIndexOf(":") + 2))
+			if(x > winner){
+				x = winner;
+				winningplayer = i;
+			}
+		}
+		if(winningplayer == 0){
+			console.log("Dealer wins")
+			document.getElementById("winner").innerHTML = "DEALER WINS"
+			document.getElementById("winscreen").style.marginTop = "-4vw";
+		}
+		else{
+		document.getElementById("player" + winningplayer).classList.add("highlight")
+		document.getElementById("winner").innerHTML = "WINNER : Player" + winningplayer;
+		document.getElementById("winscreen").style.marginTop = "-4vw";
+		}
+	}
+	function cry(){
+		document.getElementById("body").style.padding = "0"
+		iframe = document.getElementById("iframe")
+		iframe.classList.remove("hidden")
+		iframe.src = "https://www.youtube.com/embed/gSJ9zJqX3dg"
+	}
+	function redirect(){
+		window.location.href = "../Kasyno/index.html"
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>EKONOMBETS FREE VIRTUAL CASINO 24/7</title>
+	<link href="index.css" rel="stylesheet">
+</head>
+<body>
+<header>
+	<h1 class="logo">EKONOMBETS</h1>
+	<p class="profile"> USER: <a href="https://ekonomik.gniezno.pl">ADMIN</a> <img class="profile" src="assets/profile.jpg"> </p>
+	<p class="profile" id="saldo" onclick="add()">BALANCE: $1500</p>
+</header>
+<div class="casinobg">
+	<div class="board">
+		<div class="fieldzero" onclick="betwindow(this)">0</div>
+		<div class="fieldr" onclick="betwindow(this)">1</div>
+		<div class="fieldb" onclick="betwindow(this)">2</div>
+		<div class="fieldr" onclick="betwindow(this)">3</div>
+		<div class="fieldb" onclick="betwindow(this)">4</div>
+		<div class="fieldr" onclick="betwindow(this)">5</div>
+		<div class="fieldb" onclick="betwindow(this)">6</div>
+		<div class="fieldr" onclick="betwindow(this)">7</div>
+		<div class="fieldb" onclick="betwindow(this)">8</div>
+		<div class="fieldr" onclick="betwindow(this)">9</div>
+		<div class="fieldb" onclick="betwindow(this)">10</div>
+		<div class="fieldb" onclick="betwindow(this)">11</div>
+		<div class="fieldr" onclick="betwindow(this)">12</div>
+		<div class="fieldb" onclick="betwindow(this)">13</div>
+		<div class="fieldr" onclick="betwindow(this)">14</div>
+		<div class="fieldb" onclick="betwindow(this)">15</div>
+		<div class="fieldr" onclick="betwindow(this)">16</div>
+		<div class="fieldb" onclick="betwindow(this)">17</div>
+		<div class="fieldr" onclick="betwindow(this)">18</div>
+		<div class="fieldr" onclick="betwindow(this)">19</div>
+		<div class="fieldb" onclick="betwindow(this)">20</div>
+		<div class="fieldr" onclick="betwindow(this)">21</div>
+		<div class="fieldb" onclick="betwindow(this)">22</div>
+		<div class="fieldr" onclick="betwindow(this)">23</div>
+		<div class="fieldb" onclick="betwindow(this)">24</div>
+		<div class="fieldr" onclick="betwindow(this)">25</div>
+		<div class="fieldb" onclick="betwindow(this)">26</div>
+		<div class="fieldr" onclick="betwindow(this)">27</div>
+		<div class="fieldb" onclick="betwindow(this)">28</div>
+		<div class="fieldb" onclick="betwindow(this)">29</div>
+		<div class="fieldr" onclick="betwindow(this)">30</div>
+		<div class="fieldb" onclick="betwindow(this)">31</div>
+		<div class="fieldr" onclick="betwindow(this)">32</div>
+		<div class="fieldb" onclick="betwindow(this)">33</div>
+		<div class="fieldr" onclick="betwindow(this)">34</div>
+		<div class="fieldb" onclick="betwindow(this)">35</div>
+		<div class="fieldr" onclick="betwindow(this)">36</div>
+	</div>
+	<div class="board2">
+		<div class="option" onclick="betwindow(this)">1 <br>to<br> 12</div>
+		<div class="option" onclick="betwindow(this)">13 <br>to<br> 24</div>
+		<div class="option" onclick="betwindow(this)">25 <br>to<br> 36</div>	
+	</div>
+	<div class="board3">
+		<div class="suboption" onclick="betwindow(this)">1 <br>to<br> 18</div>
+		<div class="suboption" onclick="betwindow(this)">E<br>v<br>e<br>n</div>
+		<div class="suboption" onclick="betwindow(this)" style="background-color: red;"><br></div>	
+		<div class="suboption" onclick="betwindow(this)" style="background-color: black">b</div>
+		<div class="suboption" onclick="betwindow(this)">O<br>d<br>d</div>
+		<div class="suboption" onclick="betwindow(this)">19 <br>to<br> 36</div>
+	</div>
+	<div class="beton" id="beton">
+		<div class="beton-column1">
+			<p class="beton" id="beton-column1" style="display:contents">You are betting on:</p> <br>
+			<p class="beton" id="Multiplier" style="display:contents">Multiplier: </p> <br>
+			<p class="beton" id="Amount" style="display:contents;">Amount: </p> <br>
+			<input type="range" id="cost" style="width: 300px; margin-left: 27%;" min="1" max="250" onchange="slider()"> <br>
+			<p class="beton" id="Winnings" style="display:contents;">Potential winnings: </p> <br>
+		</div>
+		<div class="bet" onclick="bet()">BET</div>
+		<div class="cancel" onclick="cancel()">CANCEL</div>
+	</div>
+	<table id="records">
+		<tr>
+			<th>BET</th>
+			<th>AMOUNT</th>
+			<th>MULTIPLIER</th>
+			<th>WON</th>
+		</tr>
+		<tr>
+			<td>INSERT INTO 'BALANCE' VALUES(1500)</td>
+			<td>$1</td>
+			<td>15000x</td>
+			<td>$1500</td>
+		</tr>
+	</table>
+	<div class="play" onclick="runtheroulette()">PLAY</div>
+	<div class="roulettetable">
+		<img src="assets/table.png">
+		<div>
+			<div class="winningnumber" id="winningnumber">?</div>
+	</div>
+</div>
+<script type="text/javascript">
+	document.getElementById("records").classList.add("display");
+	balance = Number();
+	balance = 1500;
+	mult = 1;
+	winningnum = Array();
+	winningnums = Array();
+	onethird = Array(1,2,3,4,5,6,7,8,9,10,11,12);
+	twothird = Array(13,14,15,16,17,18,19,20,21,22,23,24);
+	threethird = Array(25,26,27,28,29,30,31,32,33,34,35,36);
+	firsthalf = Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18);
+	secondhalf = Array(19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36);
+	red = Array(1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36);
+	black = Array(2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35);
+	even = Array(2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36);
+	odd = Array(1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35);
+	function add(){
+		balance = balance + 10;
+		document.getElementById("saldo").innerHTML = "BALANCE: $" + balance;
+	}
+	function betwindow(x){
+		document.getElementById("records").classList.remove("display");
+		document.getElementById("beton").classList.add("display");
+		winningnums = Array();
+		if(isNaN(Number(x.innerHTML))){
+			if(x.innerHTML == "1 <br>to<br> 12"){
+				winningnums = onethird;
+			}
+			else if(x.innerHTML == "13 <br>to<br> 24"){
+				winningnums = twothird;
+			}
+			else if(x.innerHTML == "25 <br>to<br> 36"){
+				winningnums = threethird;
+			}
+			else if(x.innerHTML == "1 <br>to<br> 18"){
+				winningnums = firsthalf;
+			}
+			else if(x.innerHTML == "E<br>v<br>e<br>n"){
+				winningnums = even;
+			}
+			else if(x.innerHTML == "<br>"){
+				winningnums = red;
+			}
+			else if(x.innerHTML == "b"){
+				winningnums = black;
+			}
+			else if(x.innerHTML == "O<br>d<br>d"){
+				winningnums = odd;
+			}
+			else if(x.innerHTML == "19 <br>to<br> 36"){
+				winningnums = secondhalf;
+			}
+		}
+		else{
+		x = Number(x.innerHTML);
+		winningnums.push(x);
+		}
+		document.getElementById("beton-column1").innerHTML = "You are betting on: " + winningnums;
+		mult = (36/winningnums.length) -1;
+		document.getElementById("Multiplier").innerHTML = "Multiplier: "+ mult + "x";
+		document.getElementById("Amount").innerHTML = "Amount: $" + document.getElementById("cost").value;
+		document.getElementById("Winnings").innerHTML = "Potential winnings: $" + document.getElementById("cost").value * mult;
+	}
+	function bet(){
+		if(balance < document.getElementById("cost").value){
+			alert("You can't afford this bet");
+		}
+		else if(balance >= document.getElementById("cost").value){
+		balance = balance - document.getElementById("cost").value;
+		document.getElementById("saldo").innerHTML = "BALANCE: $" + balance;
+		document.getElementById("beton").classList.remove("display");
+		document.getElementById("records").classList.add("display");
+		records = document.getElementById("records");
+		row = records.insertRow(1);
+		b = row.insertCell(0);
+		a = row.insertCell(1);
+		m = row.insertCell(2);
+		w = row.insertCell(3);
+		a.innerHTML = document.getElementById("cost").value
+		b.innerHTML = winningnums;
+		m.innerHTML = mult;
+		w.innerHTML = "???";
+		}
+	}
+	function cancel(){
+		winningnums = Array();
+		document.getElementById("beton").classList.remove("display");
+		document.getElementById("records").classList.add("display");
+	}
+	function slider(){
+		document.getElementById("Amount").innerHTML = "Amount: $" + document.getElementById("cost").value;
+		document.getElementById("Winnings").innerHTML = "Potential winnings: $" + document.getElementById("cost").value * mult;
+	}
+	function runtheroulette(){
+		alert("*cue epic roulette wheel spin...*");
+		winningnum = Math.floor(Math.random() * 37);
+		document.getElementById("winningnumber").innerHTML = winningnum;
+		record = document.getElementById("records");
+		r=1;
+		while(row=record.rows[r++]){
+			var c=3;
+  			while(cell=row.cells[c++]){
+				if(cell.innerHTML == "???"){
+					c = 0
+					if(row.cells[c].innerHTML.includes(winningnum)){
+						amt = row.cells[c+1]
+						mlt = row.cells[c+2]
+						row.cells[c+3].innerHTML = "$" + Number(amt.innerHTML) * Number(mlt.innerHTML);
+						balance = Number(balance) + (Number(amt.innerHTML) * Number(mlt.innerHTML));
+						document.getElementById("saldo").innerHTML = "BALANCE: $" + balance;
+					}
+					else{
+						row.cells[c+3].innerHTML = "$0"
+					}
+					}
+				}
+			}
+		}
+//					Rest in peace, spinning table... [*]
+</script>
+</body>
+</html>
