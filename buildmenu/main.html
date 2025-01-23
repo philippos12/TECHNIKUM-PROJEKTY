@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>The Settlers 2 (UNOFFICIAL FAN PROJECT PLS UBISOFT DON'T SUE)</title>
+</head>
+<body onclick="menu()">
+<p id="pos" style="user-select: none; padding-left: 10px;">Pos: 0, 0</p>
+<div class="menu hidden" id="menu">
+    <div class="box"><img src="wood.png" style="height: 100%; width: 100%;" onclick="building(this.src)"></div>
+    <div class="box"><img src="stone.png" style="height: 100%; width: 100%;" onclick="building(this.src)"></div>
+    <div class="box"><img src="tOWER.png" style="height: 100%; width: 100%;" onclick="building(this.src)"></div>
+</div>
+<img id="site" src="workarea.png" style="position: fixed;" class="hidden">
+<div class="hud">
+    <div class="info" id="Wood" onmouseover="tutorial(this.id)" onmouseout="hidetutorial()">0</div>
+    <div class="info" id="Stone" onmouseover="tutorial(this.id)" onmouseout="hidetutorial()">0</div>
+    <div class="info" id="Population" onmouseover="tutorial(this.id)" onmouseout="hidetutorial()">0</div>
+    <div class="info" id="Safety" onmouseover="tutorial(this.id)" onmouseout="hidetutorial()">0</div>
+    <div class="info" id="time" style="float:right; width: 5vw;">12:00</div>
+</div>
+<div class="tutorial hidden" id="i"><p id="tutorial"></p><img src="wood.png" id="exampleimage"></div>
+
+<script type="text/javascript">
+menuopen = 0;
+wood = 0;
+stone = 0;
+pop = 0;
+towers = 0;
+setInterval(passtime, 1000)
+addEventListener("mousemove", position)
+function position(m){
+    mY = m.pageY;
+    mX = m.pageX;
+    document.getElementById("pos").innerHTML = "Position: " + mX + ", " + mY;
+}
+function menu(){
+    if(menuopen == 0){
+    document.getElementById("site").classList.remove("hidden")
+    document.getElementById("site").style.top = (mY - 50) + "px"
+    document.getElementById("site").style.left = (mX - 100) + "px"
+    document.getElementById("menu").classList.remove("hidden")
+    document.getElementById("menu").style.top = (mY - 180) + "px"
+    document.getElementById("menu").style.left = (mX + 100) + "px"
+    menuopen = 1;
+    }
+    else if(menuopen == 1){
+        menuopen = 0;
+        document.getElementById("site").classList.add("hidden")
+        document.getElementById("menu").classList.add("hidden")
+    }
+}
+function building(b){
+    structure = document.createElement("img")
+    structure.classList.add("structure")
+    structure.src = b
+    structure.style.top = document.getElementById("site").style.top
+    structure.style.left = Number(document.getElementById("site").style.left.slice(document.getElementById("site").style.left, -2)) + 45 + "px"
+    document.body.appendChild(structure)
+
+    if(b.slice(b.lastIndexOf("/") + 1, b.lastIndexOf(".png")) == "wood"){
+        wood = wood + 1;
+        document.getElementById("Wood").innerHTML = Number(document.getElementById("Wood").innerHTML) - 1
+        document.getElementById("Population").innerHTML = Number(document.getElementById("Population").innerHTML) + 1
+        pop = pop + 1;
+
+    }
+    else if(b.slice(b.lastIndexOf("/") + 1, b.lastIndexOf(".png")) == "stone"){
+        stone = stone + 1;
+        pop = pop + 1;
+        document.getElementById("Population").innerHTML = Number(document.getElementById("Wood").innerHTML) + 1
+        document.getElementById("Wood").innerHTML = Number(document.getElementById("Wood").innerHTML) + wood
+    }
+    else if(b.slice(b.lastIndexOf("/") + 1, b.lastIndexOf(".png")) == "tOWER"){
+        pop = pop + 1;
+        towers = towers + 1;
+        document.getElementById("Population").innerHTML = Number(document.getElementById("Wood").innerHTML) + 1
+    }
+}
+function tutorial(name){
+    document.getElementById("i").classList.remove("hidden")
+    if(name == "Population"){
+        document.getElementById("tutorial").innerHTML = "This box is providing you information on your village's population. Every villager pays tax towards the village's development. At your current population, you earn " + (pop*0.5) + " every day. Increase population by constructing more buildings."
+    }
+    else if(name == "Safety"){
+        document.getElementById("tutorial").innerHTML = "Safety of your village. For now, every tower adds 5% towards village safety. The goal of this game (for now) is to achieve 100% safety. \n Safety [" + towers*5 + "/100]"
+        document.getElementById("exampleimage").src = "tOWER.png"
+    }
+    else{
+        document.getElementById("tutorial").innerHTML = "This box is providing you information on " + name + ". Increase your " + name + " production by building the structures illustrated below: \n"
+        document.getElementById("exampleimage").src = name + ".png"
+    }
+}
+function hidetutorial(){
+    document.getElementById("i").classList.add("hidden")
+}
+function passtime(){
+    h = document.getElementById("time").innerHTML
+    h = h.slice(0, h.lastIndexOf(":"))
+    m = h.slice(h.lastIndexOf(":"), h.length)
+    h = Number(h) + 1;
+    m = Math.floor(Math.random() * 60)
+    if(h > 23){
+        h = 0;
+    }
+    if(m == 0){
+        m = "00"
+    }
+    else if(m < 10){
+        m = "0" + m;
+    }
+    document.getElementById("time").innerHTML = h + ":" + m;
+    if(h == 18){
+        document.body.style.backgroundColor = "rgb(53, 158, 12)"
+    }
+    else if(h == 19){
+        document.body.style.backgroundColor = "rgb(43, 138, 12)"
+    }
+    else if(h == 20){
+        document.body.style.backgroundColor = "rgb(33, 118, 12)"
+    }
+    else if(h == 21){
+        document.body.style.backgroundColor = "rgb(23, 98, 12)"
+    }
+    else if(h == 22){
+        document.body.style.backgroundColor = "rgb(13, 78, 12)"
+    }
+    else if(h == 6){
+        document.body.style.backgroundColor = "rgb(23, 98, 12)"
+    }
+    else if(h == 7){
+        document.body.style.backgroundColor = "rgb(33, 118, 12)"
+    }
+    else if(h == 8){
+        document.body.style.backgroundColor = "rgb(53, 158, 12)"
+    }
+    else if(h == 12){
+        document.getElementById("Wood").innerHTML = Number(document.getElementById("Wood").innerHTML) + wood
+        document.getElementById("Stone").innerHTML = Number(document.getElementById("Stone").innerHTML) + stone
+    }
+}
+</script>
+</body>
+</html>
