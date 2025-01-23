@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<title>memo 27.04.2023</title>
+</head>
+<body>
+  <div class="menu" id="menu">
+    <header>Wybierz ilość par!</header>
+  </div>
+<script type="text/javascript">
+  
+  for(i = 17; i < 27; i++){
+    options = document.createElement("div")
+    options.innerHTML = i 
+    options.value = i * 2
+    options.classList.add("difficulty")
+    options.onclick = play;
+    document.getElementById("menu").appendChild(options)
+  }
+
+  Images = ["assets/bomb.ico","assets/fish.ico","assets/gold.ico","assets/iron.ico","assets/rock.ico","assets/tree.ico","assets/Tacobell.png","assets/areuagrass.png","assets/niunius.png","assets/kotnaczelny.png"]
+  cards = 0
+  pairs = 0
+  tries = 0
+
+  function play(){
+    cards = 0
+    pairs = 0
+    tries = 0
+    document.getElementById("menu").classList.add("hidden");
+    for(i = 0; i < this.value; i++){
+      cardspace = document.createElement("div");
+      cardspace.classList.add("cardspace");
+      card = document.createElement("div");
+      card.classList.add("card");
+      card.value = Math.floor(Math.random() * this.value)
+      img = document.createElement("img");
+      img.src = Images[Math.floor(Math.random() * Images.length)];
+      img.classList.add("hidden");
+      document.body.appendChild(cardspace);
+      cardspace.appendChild(card);
+      card.appendChild(img);
+      card.onclick = selected;
+      cards = this.value;
+    }
+    console.log("pairs = " + cards / 2 ); //mala podpowiedz wrazie gdyby nikomu sie nie chcialo odnajdywac
+  }
+
+  selectedcards = 0
+
+  function selected(){
+    if(this.classList != "card selected" && selectedcards < 3){
+      this.classList.add("selected");
+      this.firstChild.classList.remove("hidden");
+      selectedcards = selectedcards + 1;
+      this.id = selectedcards;
+      if(selectedcards > 1){
+       setTimeout(clear, 500);
+    }
+  }
+  }
+
+  function clear(){
+    if(document.getElementById(1).firstChild.src != document.getElementById(2).firstChild.src){
+      document.getElementById(1).classList.remove("selected");
+      document.getElementById(1).firstChild.classList.add("hidden");
+      document.getElementById(1).id = "";
+      document.getElementById(2).classList.remove("selected");
+      document.getElementById(2).firstChild.classList.add("hidden");
+      document.getElementById(2).id = "";
+      tries = tries + 1;
+    }
+    else{
+      document.getElementById(1).onclick = "";
+      document.getElementById(2).onclick = "";
+      document.getElementById(1).style.backgroundColor = "green";
+      document.getElementById(2).style.backgroundColor = "green";
+      document.getElementById(1).id = "";
+      document.getElementById(2).id = "";
+      pairs = pairs + 1;
+    }
+    if(pairs * 2 >= cards){
+        document.getElementById("menu").classList.remove("hidden");
+        cardspaces = document.getElementsByClassName("cardspace");
+        while(cardspaces.length > 0){
+          cardspaces[0].parentNode.removeChild(cardspaces[0]);
+        }
+        document.getElementById("menu").firstElementChild.innerHTML = "BRAWO! Próby: " + tries + ", możesz zagrać jeszcze raz, wybierając ilość par:";
+      }
+    selectedcards = 0;
+    clearTimeout(clear);
+  }
+</script>
+</body>
+</html>

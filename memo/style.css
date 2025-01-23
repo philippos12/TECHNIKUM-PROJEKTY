@@ -1,0 +1,65 @@
+body{
+  background-color: rgb(144, 255, 144);
+  overflow: hidden;
+}
+header{
+  text-align: center;
+  font-size: 64px;
+}
+.cardspace{
+  height: 225px;
+  width: 145px;
+  float: left;
+}
+.card{
+  background-color: whitesmoke;
+  height: 200px;
+  width: 120px;
+  box-shadow: 4px 4px 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  transition: all 300ms;
+}
+.card:hover{
+  box-shadow: 12px 12px 5px;
+  height: 210px;
+  width: 130px;
+  position: initial;
+}
+.selected{
+  box-shadow: 12px 12px 5px;
+  height: 210px;
+  width: 130px;
+}
+.menu{
+  background-color: beige;
+  height: 650px;
+  width: 1650px;
+  position: absolute;
+  border: solid 6px;
+  margin: 120px;
+  box-sizing: border-box;
+  user-select: none;
+}
+.difficulty{
+  height: 282px;
+  width: 327px;
+  float: left;
+  text-align: center;
+  font-size: 64px;
+  padding-top: 50px;
+}
+.difficulty:hover{
+  text-align: center;
+  font-size: 80px;
+  transition: all 200ms;
+}
+.hidden{
+  display: none;
+}
+img{
+  margin-top:54px;
+  margin-left: 22px;
+  width: 100px;
+  height: 100px;
+}
