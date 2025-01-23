@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klocuszki</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="header" id="top">CUBIT</div>
+    <div class="leaderboard" id="top">
+        <div style="float: left; margin-top: 13px; margin-left: 10px;">Najpotężniejszy gracz:</div>
+        <div class="strongestplayer" id="strongestplayer"></div>
+    </div>
+    <div class="field" id="field"></div>
+    <div class="stats" id="stats" style="right: -100%; transition-duration: 600ms; transition-delay: 800ms;">
+        <div style="width: 33%; text-align: center; font-size: 300%; float: left;">Gracz:</div>
+        <div class="player" id="player"></div>
+        <div style="width: 100%; text-align: center; font-size: 300%;" id="attacks">Ataki: 0 / 1</div>
+        <div style="width: 100%; text-align: center; font-size: 300%;" id="transfers">Transfery: 0 / 5</div>
+        <div class="passbutton" onclick="NextTurn()" id="passbutton" style="background-color: red;">Zakończ turę</div>
+    </div>
+    <div class="menu" id="menu">
+        <div style="width: 100%; text-align: center; font-size: 215%;">TRYB DLA JEDNEGO GRACZA</div>
+    </div>
+    <div class="winnertab" id="winnertab" style="top: 100%;">
+        <h1 id="winner" style="text-align: center;">Jeśli to czytasz to znaczy że jesteś sprytniejszy niż ten szczur na zdjęciu</h1>
+        <img class="victory" src="assets/victory.png">
+        <p>Zapal se ze szczurem, zasłużyłeś na to</p>
+    </div>
+<script src="index.js"></script>
+</body>
+</html>
